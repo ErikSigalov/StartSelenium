@@ -15,23 +15,34 @@ public class StartSelenium {
     public void preCondition(){
         wd=new ChromeDriver();
         //System.setProperty("webdriver.chrome.driver","/");
-        //wd.get("https://obcpneustg-desktopui.obcompanion.cloud/login");
+        //wd.get("https://obcpneustg-desktopui.obcompanion.cloud/login"); // open string url
 
-        wd.navigate().to("https://obcpneustg-desktopui.obcompanion.cloud/login");
+        wd.navigate().to("https://obcpneustg-desktopui.obcompanion.cloud/login"); // open string url and save history
         //wd.navigate().forward();
 
     }
 
     @Test
     public void testName(){
-        WebElement element = wd.findElement(By.tagName("div"));
-        List<WebElement> elements = wd.findElements(By.tagName("div"));
-        System.out.println(elements.size());
+        WebElement element = wd.findElement(By.tagName("div")); // 1 element find
 
-        wd.findElement(By.className("ng-star-inserted"));
-        //wd.findElement(By.id("login-page-container"));
-        //wd.findElement(By.linkText("row"));
-        //wd.findElement(By.partialLinkText("ca"));
+        List<WebElement> elements = wd.findElements(By.tagName("div")); // all elements find
+        System.out.println(elements.size()); // import class ALT + enter
+
+        //wd.findElement(By.className("card-title"));
+        wd.findElement(By.cssSelector("a")); // tag name
+        wd.findElement(By.cssSelector("div"));
+
+        wd.findElement(By.cssSelector(".container")); //. class
+        wd.findElement(By.cssSelector("#root")); //# id
+        wd.findElement(By.cssSelector("[href='/login']")); //text
+        wd.findElement(By.cssSelector("href"));
+        wd.findElement(By.cssSelector("[href ^='/lo']")); //start
+        wd.findElement(By.cssSelector("[href $='in']")); //end
+        wd.findElement(By.cssSelector("[href *='ogi']")); //contains
+
+        wd.findElement(By.linkText("Privacy notice"));
+        wd.findElement(By.partialLinkText("Terms"));
 
 
 
@@ -40,8 +51,8 @@ public class StartSelenium {
 
     @AfterMethod
     public void postCondition(){
-        //wd.close();
-        //wd.quit();
+        //wd.close(); close just current page
+        //wd.quit(); close all pages
 
     }
 }
