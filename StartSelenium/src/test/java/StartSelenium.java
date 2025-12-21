@@ -30,16 +30,28 @@ public class StartSelenium {
         System.out.println(elements.size()); // import class ALT + enter
 
         //wd.findElement(By.className("card-title"));
-        wd.findElement(By.cssSelector("a")); // tag name
-        wd.findElement(By.cssSelector("div"));
+        wd.findElement(By.cssSelector("a"));// tag name
+        wd.findElement(By.xpath("//a"));
 
-        wd.findElement(By.cssSelector(".container")); //. class
+        wd.findElement(By.cssSelector("div"));
+        wd.findElement(By.xpath("//div"));
+
+        wd.findElement(By.cssSelector(".container"));//. class
+        wd.findElement(By.xpath("//*[@class='container']"));
+
         wd.findElement(By.cssSelector("#root")); //# id
+        wd.findElement(By.xpath("//*[@id='root']"));
+
         wd.findElement(By.cssSelector("[href='/login']")); //text
+        wd.findElement(By.xpath("//*[@href='/login']"));
+
         wd.findElement(By.cssSelector("href"));
         wd.findElement(By.cssSelector("[href ^='/lo']")); //start
+        wd.findElement(By.xpath("//*[@starts-with(@href,'/lo')]"));
+
         wd.findElement(By.cssSelector("[href $='in']")); //end
         wd.findElement(By.cssSelector("[href *='ogi']")); //contains
+        wd.findElement(By.xpath("//*[contains(@href,'/ogi')]"));
 
         wd.findElement(By.linkText("Privacy notice"));
         wd.findElement(By.partialLinkText("Terms"));

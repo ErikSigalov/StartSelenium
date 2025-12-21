@@ -7,6 +7,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class TableTest {
 
     WebDriver wd;
@@ -39,8 +41,8 @@ public class TableTest {
     @Test
 
     public void tableHomeWork1(){
-        WebElement franisco = wd.findElement(By.cssSelector("tr:nth-child(4) td:nth-child(2)"));
-        String text2 = franisco.getText();
+        WebElement francisco = wd.findElement(By.cssSelector("tr:nth-child(4) td:nth-child(2)"));
+        String text2 = francisco.getText();
 
         System.out.println(text2);
 
@@ -50,7 +52,35 @@ public class TableTest {
     @Test
 
     public void tableHomeWork2(){
-        
+        //print count of rows
+        List<WebElement> rows = wd.findElements(By.cssSelector("tr"));
+        System.out.println(rows.size());
+
+        Assert.assertEquals(rows.size(), 28);
+
+        //print count of columns
+        List<WebElement> columns = wd.findElements(By.cssSelector("tr th"));
+        System.out.println(columns.size());
+
+        //print row 3
+        List<WebElement> row3 = wd.findElements(By.cssSelector("tr:nth-child(3) td"));
+        System.out.println("Row 3 --->" + row3.size());
+
+        for(WebElement el: row3) {
+            System.out.println(el.getText());
+        }
+
+        //print last columns
+        List<WebElement> lastColumns = wd.findElements(By.cssSelector("td:last-child"));
+        for (WebElement el:
+        lastColumns){
+            System.out.println(el.getText());
+        }
+
+        //print MAaria Anders
+        System.out.println(wd.findElement(By.cssSelector("tr:nth-child(2) td:nth-child(2)")).getText());
+
+
     }
 
     @AfterMethod
